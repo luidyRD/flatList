@@ -1,4 +1,4 @@
-import {View, StyleSheet, FlatList, Image, TextInput} from 'react-native';
+import {View, StyleSheet, FlatList, Image, TextInput,} from 'react-native';
 
 export default function App() {
     return (

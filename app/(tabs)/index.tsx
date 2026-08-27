@@ -1,11 +1,12 @@
-import {View, StyleSheet, FlatList, Image} from 'react-native';
+import {View, StyleSheet, FlatList, Image,} from 'react-native';
+import {Link,} from "expo-router";
 
 const categorias = [
   {
     id: "1",
     titulo: "Em Alta",
     filmes: [
-      { id: "1a", titulo: "Oppenheimer", cor: "#1a1a2e" ,imagem:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlZg-SvVoMttL3uiP9NEehH8GbdPuhR88o842o2ynPg&s=10"},
+      { id: "1a", titulo: "Oppenheimer", cor: "#1a1a2e" ,imagem:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlZg-SvVoMttL3uiP9NEehH8GbdPuhR88o842o2ynPg&s=10", href:"/(tabs)/filme.tsx"},
       { id: "1b", titulo: "Duna 2", cor: "#16213e" ,imagem:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlZg-SvVoMttL3uiP9NEehH8GbdPuhR88o842o2ynPg&s=10"},
       { id: "1c", titulo: "Barbie", cor: "#0f3460" ,imagem:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlZg-SvVoMttL3uiP9NEehH8GbdPuhR88o842o2ynPg&s=10"},
       { id: "1d", titulo: "Poor Things", cor: "#533483" ,imagem:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlZg-SvVoMttL3uiP9NEehH8GbdPuhR88o842o2ynPg&s=10"},
