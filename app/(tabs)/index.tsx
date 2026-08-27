@@ -1,4 +1,4 @@
-import {View, StyleSheet, FlatList, Image,} from 'react-native';
+import {View, StyleSheet, FlatList, Image, TouchableOpacity} from 'react-native';
 import {Link,} from "expo-router";
 
 const categorias = [
@@ -75,14 +75,15 @@ function renderCategoria({item}:{item:any}){
       keyExtractor={filme=>filme.id}
       horizontal={true}
       contentContainerStyle={{paddingBottom:40}}
-      renderItem={({item})=>(
-          <Image
-          source={{uri:item.imagem}}
-          style={[styles.filme]}
-          >        
-              
-          </Image>
-        )}
+      renderItem={({item})=> item.href ?(
+        <Link href={item.href} asChild>
+          <TouchableOpacity activeOpacity={0.8}>
+            <Image source={{ uri: item.imagem }} style={styles.filme} />
+          </TouchableOpacity>
+        </Link>
+      ) : (
+        <Image source={{ uri: item.imagem }} style={styles.filme} />
+      )}
       > </FlatList>
      
     </View>
