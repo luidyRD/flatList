@@ -8,26 +8,27 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useLocalSearchParams, Stack, router } from 'expo-router';
+import { useLocalSearchParams, Stack } from 'expo-router';
 import DadosDosFilmes from '../DadosDosFilmes';
 import InputBusca from '../inputBusca';
 
-
-// Dados de exemplo padrão (caso ainda não venham por props ou rota)
-
 export default function Filme() {
   const { id } = useLocalSearchParams();
-
-  console.log('ID recebido:', id);
+  const filmeId = Array.isArray(id) ? id[0] : id;
 
   const categorias = DadosDosFilmes();
-  const filmeEncontrado = categorias
+  const filme = categorias
     .flatMap((categoria) => categoria.filmes)
-    .find((f) => f.id === id);
+    .find((f) => String(f.id) === String(filmeId));
 
-  console.log('Filme encontrado:', filmeEncontrado);
-
-  const filme = filmeEncontrado;
+  if (!filme) {
+    return (
+      <View style={styles.emptyStateContainer}>
+        <Text style={styles.emptyStateTitle}>Filme não encontrado</Text>
+        <Text style={styles.emptyStateText}>Não foi possível localizar este título.</Text>
+      </View>
+    );
+  }
 
   return (
     <>
@@ -116,6 +117,24 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 40,
+  },
+  emptyStateContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#0F172A',
+    padding: 24,
+  },
+  emptyStateTitle: {
+    color: '#F8FAFC',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  emptyStateText: {
+    color: '#CBD5E1',
+    fontSize: 14,
+    textAlign: 'center',
   },
   innerContainer: {
     width: '100%',

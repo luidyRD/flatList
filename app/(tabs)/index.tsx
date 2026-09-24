@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList, Image } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import DadosDosFilmes from '../components/DadosDosFilmes';
 import CardCategorias from '../components/CardCategorias';
 import InputBusca from '../components/inputBusca';
